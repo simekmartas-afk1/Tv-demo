@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Projektové řízení - Přehled staveb (demo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%231546b0%22/%3E%3Cpath d=%22M9 26V8h15M14 8v4M22 8v6%22 stroke=%22%233ee6f0%22 stroke-width=%222.5%22 fill=%22none%22/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="viewport">
+<div id="stage">
+  <div class="bg-glow g1"></div><div class="bg-glow g2"></div><div class="bg-glow g3"></div>
+
+  <header class="top">
+    <div class="brand">
+      <div class="brand-ico"><svg viewBox="0 0 32 32"><path d="M8 27V8h16M8 8l-3 4M14 8v4M22 8v6m-2 0a2 2 0 1 0 4 0" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div><div class="brand-t">Projektové řízení</div><div class="brand-s">Stavby · obchod · sklad</div></div>
+    </div>
+    <nav class="tabs" role="tablist">
+      <button class="tab active" data-screen="prehled"><svg viewBox="0 0 20 20"><rect x="3" y="3" width="5.5" height="5.5" rx="1.5"/><rect x="11.5" y="3" width="5.5" height="5.5" rx="1.5"/><rect x="3" y="11.5" width="5.5" height="5.5" rx="1.5"/><rect x="11.5" y="11.5" width="5.5" height="5.5" rx="1.5"/></svg>Přehled</button>
+      <button class="tab" data-screen="obchod"><svg viewBox="0 0 20 20"><path d="M3 4h14l-5.5 6.5V16l-3-1.5v-4z"/></svg>Obchod</button>
+      <button class="tab" data-screen="harmonogram"><svg viewBox="0 0 20 20"><path d="M3 3v14h14M6 6h7M6 9.5h9M6 13h5"/></svg>Harmonogram</button>
+      <button class="tab" data-screen="sklad"><svg viewBox="0 0 20 20"><path d="M3 8l7-4 7 4v9H3zM7 17v-5h6v5"/></svg>Sklad</button>
+      <button class="tab" data-screen="vozidla"><svg viewBox="0 0 20 20"><path d="M2 6h10v8H2zM12 9h3.5l2.5 3v2h-6M5 16.5a1.5 1.5 0 1 0 0-.1M14 16.5a1.5 1.5 0 1 0 0-.1"/></svg>Vozidla</button>
+      <button class="tab" data-screen="finance"><svg viewBox="0 0 20 20"><path d="M15 5.5A6 6 0 1 0 15 14.5M3 8.5h8M3 11.5h8"/></svg>Finance</button>
+    </nav>
+    <div class="clockbox">
+      <div class="clock" id="clock">16:36</div>
+      <div class="clock-meta"><div id="date">čtvrtek 12. listopadu</div><div>Brno · 4 °C · zataženo</div></div>
+    </div>
+    <span class="demo-badge" title="Všechna čísla, názvy a stavby jsou smyšlené">Vzorová data</span>
+    <button class="icon-btn bell" id="bell"><svg viewBox="0 0 20 20"><path d="M5 14V9a5 5 0 0 1 10 0v5l1.5 1.5h-13zM8.5 17.5h3"/></svg><i>3</i></button>
+    <div class="avatar">MŠ</div>
+  </header>
+
+  <main>
+  <!-- ============ PŘEHLED ============ -->
+  <section class="screen active" id="s-prehled">
+    <div class="hero-left">
+      <div class="greet"><span class="dot live"></span><span id="greet">Dobrý den · čtvrtek 12. listopadu 2026</span></div>
+      <h1>Přehled staveb</h1>
+      <p class="sub">12 aktivních staveb · 6 rodinných domů · 6 komerčních projektů</p>
+      <div class="kpis">
+        <div><span>Smlouvy 2026</span><b><em data-count="18.04" data-dec="2">18,04</em> <small>mil. €</small></b></div>
+        <div><span>Vyfakturováno</span><b><em data-count="11.26" data-dec="2">11,26</em> <small>mil. €</small></b></div>
+        <div><span>Průměrná marže</span><b><em data-count="17.8" data-dec="1">17,8</em> <small>%</small></b></div>
+      </div>
+    </div>
+
+    <div class="hero-machine" id="machine">
+      <svg class="rings" viewBox="0 0 600 200">
+        <defs><radialGradient id="rg" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#5ff2ff" stop-opacity=".55"/><stop offset=".6" stop-color="#2aa9ff" stop-opacity=".12"/><stop offset="1" stop-color="#2aa9ff" stop-opacity="0"/></radialGradient></defs>
+        <ellipse cx="300" cy="120" rx="250" ry="70" fill="url(#rg)"/>
+        <ellipse class="ring r1" cx="300" cy="120" rx="210" ry="56"/>
+        <ellipse class="ring r2" cx="300" cy="120" rx="150" ry="40"/>
+        <ellipse class="ring r3" cx="300" cy="120" rx="95" ry="25"/>
+        <ellipse class="ring r4" cx="300" cy="120" rx="60" ry="15"/>
+      </svg>
+      <svg class="truck" viewBox="0 0 420 240">
+        <defs>
+          <linearGradient id="cab" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4f8ff"/><stop offset="1" stop-color="#9fb4d6"/></linearGradient>
+          <linearGradient id="bed" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7db3ff"/><stop offset="1" stop-color="#2f62b8"/></linearGradient>
+          <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1c3f78"/><stop offset="1" stop-color="#3fa0e6"/></linearGradient>
+        </defs>
+        <!-- crane -->
+        <path d="M168 120 L168 62 L196 52 L330 30" stroke="#cfd9ea" stroke-width="9" fill="none" stroke-linecap="round"/>
+        <path d="M330 30 L332 70" stroke="#aab8cf" stroke-width="2"/>
+        <rect x="160" y="96" width="20" height="40" rx="3" fill="#bfcbe0"/>
+        <!-- load -->
+        <g fill="#d98b72" stroke="#9c5a49" stroke-width="1.2">
+          <rect x="196" y="98" width="40" height="30"/><rect x="238" y="98" width="40" height="30"/><rect x="280" y="98" width="40" height="30"/><rect x="322" y="98" width="40" height="30"/>
+        </g>
+        <path d="M196 106h166M196 118h166" stroke="#9c5a49" stroke-width=".8"/>
+        <!-- bed -->
+        <rect x="160" y="128" width="210" height="22" rx="3" fill="url(#bed)"/>
+        <rect x="160" y="150" width="210" height="10" fill="#1b2d55"/>
+        <!-- cab -->
+        <path d="M40 160 L40 92 Q42 70 66 68 L132 68 Q150 68 152 86 L156 160 Z" fill="url(#cab)"/>
+        <path d="M52 112 L56 82 Q58 76 66 76 L120 76 Q128 76 129 84 L131 112 Z" fill="url(#glass)"/>
+        <rect x="134" y="80" width="16" height="34" rx="2" fill="url(#glass)"/>
+        <rect x="44" y="124" width="92" height="22" rx="3" fill="#2a3550"/>
+        <path d="M48 130h84M48 136h84M48 142h84" stroke="#56627e" stroke-width="2"/>
+        <rect x="40" y="148" width="24" height="7" rx="2" fill="#ffe7a6"/><rect x="116" y="148" width="24" height="7" rx="2" fill="#ffe7a6"/>
+        <rect x="70" y="60" width="60" height="7" rx="3" fill="#ff8a3d"/>
+        <rect x="34" y="158" width="340" height="14" rx="4" fill="#0e1a36"/>
+        <!-- wheels -->
+        <g fill="#0b1226" stroke="#35425f" stroke-width="5">
+          <circle cx="92" cy="178" r="24"/><circle cx="252" cy="178" r="24"/><circle cx="312" cy="178" r="24"/>
+        </g>
+        <g fill="#8ea0bf"><circle cx="92" cy="178" r="9"/><circle cx="252" cy="178" r="9"/><circle cx="312" cy="178" r="9"/></g>
+      </svg>
+      <button class="machine-tag" id="machineTag"><span class="dot live"></span><span><b>Valník s hydraulickou rukou · BM-482CZ</b><br><small>Cihly a malta · 6 palet → RD Ořechov</small></span></button>
+    </div>
+
+    <div class="accounts" id="accounts">
+      <div class="acc a1"><span>Rezervní účet</span><b>501 000 €</b></div>
+      <div class="acc a2"><span>Mzdový účet</span><b>214 960 €</b></div>
+      <div class="acc a3"><span>Provozní účet</span><b>1 144 810 €</b></div>
+      <div class="acc-main glass">
+        <div class="notch"></div>
+        <span class="lbl">Stav bankovních účtů · celkem</span>
+        <div class="big"><em data-count="1860760" data-dec="0">1 860 760</em><small>,00 €</small></div>
+        <div class="acc-row">
+          <div><span>↓ Příjem dnes</span><b class="pos">+66 800 €</b></div>
+          <div><span>↑ Odchozí dnes</span><b>−31 540 €</b></div>
+        </div>
+        <div class="acc-foot"><span class="dot live"></span>16:36 · platba přijata <b>+96 500 €</b> · Polyfunkční dům Jih</div>
+      </div>
+    </div>
+
+    <div class="card map-card glass" id="mapCard">
+      <div class="card-h"><div class="ci"><svg viewBox="0 0 20 20"><path d="M10 18s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10z"/><circle cx="10" cy="8" r="2"/></svg></div><div><h3>Mapa staveb</h3><p>Česko · 12 aktivních</p></div><button class="pill pill-acc" id="mapLive">Naživo</button></div>
+      <svg id="czmap" viewBox="0 0 460 250"></svg>
+      <div class="legend"><span><i class="lg c1"></i>Podle plánu</span><span><i class="lg c2"></i>Riziko</span><span><i class="lg c3"></i>Zpoždění</span><span><i class="lg c4"></i>Centrála</span></div>
+    </div>
+
+    <div class="card sites-card glass">
+      <div class="card-h"><div class="ci"><svg viewBox="0 0 32 32"><path d="M8 27V8h16M8 8l-3 4M14 8v4M22 8v6" fill="none"/></svg></div><div><h3>Aktivní stavby</h3><p id="sitesSub">6 staveb · 24,1 mil. €</p></div>
+        <div class="seg" id="siteFilter"><button data-f="rd">Rodinné domy</button><button data-f="kom" class="on">Komerční</button></div></div>
+      <div class="sites" id="sites"></div>
+    </div>
+
+    <div class="card mini glass" id="cardPeople">
+      <div class="card-h sm"><div class="ci"><svg viewBox="0 0 20 20"><circle cx="7" cy="7" r="3"/><circle cx="14" cy="8" r="2.4"/><path d="M2 16c0-3 2.5-5 5-5s5 2 5 5M12 12.5c3 0 6 1 6 3.5"/></svg></div><div><p class="t">Na stavbách dnes</p><b class="v"><em data-count="66">66</em> <small>lidí</small></b></div></div>
+      <div class="mini-f"><span>11 strojů · 9 part</span><span class="dashes"><i></i><i></i><i></i><i></i><i class="off"></i></span></div>
+    </div>
+    <div class="card mini glass hi" id="cardPlan">
+      <div class="card-h sm"><div class="ci"><svg viewBox="0 0 20 20"><path d="M3 14a7 7 0 1 1 14 0M10 14l3-4"/></svg></div><div><p class="t">Plnění harmonogramu</p><b class="v"><em data-count="94">94</em> <small>%</small></b></div></div>
+      <div class="mini-f"><span>2 stavby v riziku</span><span class="dashes"><i></i><i></i><i></i><i></i><i></i></span></div>
+    </div>
+    <div class="card gauge-card glass">
+      <div class="card-h sm"><div class="ci"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3.5"/></svg></div><div><h3>Stav projektů</h3><p>12 aktivních staveb</p></div></div>
+      <svg class="gauge" viewBox="0 0 240 140">
+        <defs><linearGradient id="gg" x1="0" x2="1"><stop offset="0" stop-color="#2fe0d0"/><stop offset=".7" stop-color="#4fd8ff"/><stop offset=".85" stop-color="#f3d58c"/><stop offset="1" stop-color="#ff5fa2"/></linearGradient></defs>
+        <path d="M30 125 A90 90 0 0 1 210 125" stroke="rgba(120,170,255,.15)" stroke-width="16" fill="none" stroke-linecap="round"/>
+        <path class="gauge-arc" d="M30 125 A90 90 0 0 1 210 125" stroke="url(#gg)" stroke-width="16" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div class="gauge-v"><b><em data-count="75">75</em><small>%</small></b><span>staveb podle plánu</span></div>
+      <div class="legend sm"><span><i class="lg c1"></i>Plán 9</span><span><i class="lg c5"></i>Riziko 2</span><span><i class="lg c3"></i>Zpoždění 1</span></div>
+    </div>
+
+    <div class="card today glass" id="today">
+      <div class="card-h"><div class="ci"><svg viewBox="0 0 20 20"><rect x="3" y="4" width="14" height="13" rx="2"/><path d="M3 8h14M7 2v4M13 2v4"/></svg></div><div><h3>Dnes na stavbách</h3><p>11 aktivních · 10 staveb · centrála</p></div>
+        <div class="chips"><span class="chip c-a">2 probíhá</span><span class="chip c-b">9 hotovo</span><span class="chip c-c">1 problém</span></div></div>
+      <div class="tl" id="timeline"></div>
+    </div>
+
+    <div class="card fakt glass">
+      <div class="card-h"><div class="ci"><svg viewBox="0 0 20 20"><path d="M3 16l5-6 3 3 6-7"/></svg></div><div><h3>Fakturace 2026</h3><p>měsíčně · skutečnost a plán</p></div><span class="chip c-a">83 % plánu</span></div>
+      <div class="bars" id="bars"></div>
+    </div>
+
+    <div class="card zak glass">
+      <div class="card-h sm"><div class="ci"><svg viewBox="0 0 20 20"><path d="M3 7l7-4 7 4-7 4zM3 7v6l7 4 7-4V7"/></svg></div><div><h3>Zakázky</h3><p>podle typu</p></div></div>
+      <div class="donut-wrap">
+        <svg class="donut" viewBox="0 0 120 120"><circle cx="60" cy="60" r="44" stroke="rgba(120,170,255,.15)" stroke-width="16" fill="none"/>
+          <circle class="d1" cx="60" cy="60" r="44" stroke="#33e2d8" stroke-width="16" fill="none" stroke-dasharray="186 276.5" transform="rotate(-90 60 60)"/>
+          <circle class="d2" cx="60" cy="60" r="44" stroke="#e7f2ff" stroke-width="16" fill="none" stroke-dasharray="80 276.5" stroke-dashoffset="-190" transform="rotate(-90 60 60)"/>
+          <text x="60" y="66" text-anchor="middle" class="donut-ico">▥</text></svg>
+        <div class="donut-v"><b><em data-count="24.1" data-dec="1">24,1</em></b><span>mil. € · zakázky</span></div>
+      </div>
+      <div class="zak-rows"><div><i class="lg c1"></i>Komerční · 6<b>24,1 mil. €</b></div><div><i class="lg c6"></i>Rodinné domy · 6<b>1,87 mil. €</b></div></div>
+    </div>
+
+    <div class="card cash glass">
+      <div class="card-h sm"><div class="ci"><svg viewBox="0 0 20 20"><rect x="2" y="5" width="16" height="11" rx="2"/><path d="M2 9h16"/></svg></div><div><h3>Volná hotovost</h3><p>12 týdnů · výhled</p></div></div>
+      <div class="cash-v"><b><em data-count="1.84" data-dec="2">1,84</em> <small>mil. €</small></b><span class="pos">▲ +12 % za 8 týdnů</span></div>
+      <svg class="spark" viewBox="0 0 300 110" id="spark"></svg>
+    </div>
+  </section>
+
+  <!-- ============ OBCHOD ============ -->
+  <section class="screen" id="s-obchod">
+    <div class="pg-head"><div><div class="greet"><span class="dot live"></span>Obchodní trychtýř · rok 2026</div><h1>Od poptávky po fakturu</h1></div>
+      <div class="live-box glass"><div class="ci"><svg viewBox="0 0 20 20"><path d="M10 2l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></svg></div><div><span class="nazivo"><span class="dot live"></span>NAŽIVO</span><b id="liveTicker">Domluvená schůzka · Ing. Kubík · Sklad Lednice</b></div></div></div>
+    <div class="funnel glass">
+      <div class="f-stats" id="fstats"></div>
+      <svg class="tube" viewBox="0 0 1800 200" preserveAspectRatio="none" id="tube"></svg>
+      <div class="f-phases"><span>OBCHOD</span><span>REALIZACE</span><span>FAKTURACE</span></div>
+    </div>
+    <div class="ob-grid">
+      <div class="card glass"><div class="card-h"><div class="ci">€</div><div><h3>Kanály a cena poptávky</h3><p>posledních 90 dní</p></div></div>
+        <table class="tbl" id="channels"></table></div>
+      <div class="card glass"><div class="card-h"><div class="ci"><svg viewBox="0 0 20 20"><rect x="3" y="4" width="14" height="13" rx="2"/><path d="M3 8h14"/></svg></div><div><h3>Schůzky tento týden</h3><p>14 domluvených · 5 realizací</p></div><span class="chip c-a">+5 dnes</span></div>
+        <div class="meet" id="meet"></div></div>
+      <div class="card glass"><div class="card-h"><div class="ci">€</div><div><h3>Návratnost a konverze</h3><p>co přinese 1 € v reklamě</p></div></div>
+        <div class="roi"><div class="glass-in"><span>Cena za poptávku</span><b>37,6 <small>€</small></b><i class="chip c-b">−12 %</i></div><div class="glass-in"><span>Poptávka → smlouva</span><b>3,2 <small>%</small></b><i class="chip c-a">+0,4 b.</i></div><div class="glass-in"><span>Tržby na 1 € reklamy</span><b>204 <small>€</small></b><i class="chip c-a">ROAS</i></div></div>
+        <div class="weeks"><span>Poptávky za týden</span><div id="weeks"></div></div></div>
+    </div>
+  </section>
+
+  <!-- ============ HARMONOGRAM ============ -->
+  <section class="screen" id="s-harmonogram">
+    <div class="pg-head"><div><div class="greet"><span class="dot live"></span>Týden 46 · 9.-15. listopadu 2026</div><h1>Harmonogram staveb</h1><p class="sub">12 staveb · 4 fáze · kritická cesta zvýrazněna</p></div>
+      <div class="seg big" id="hScale"><button class="on" data-s="m">Měsíce</button><button data-s="t">Týdny</button></div></div>
+    <div class="card glass gantt-card"><div class="gantt" id="gantt"></div></div>
+  </section>
+
+  <!-- ============ SKLAD ============ -->
+  <section class="screen" id="s-sklad">
+    <div class="sklad-head">
+      <div class="greet up">CENTRÁLNÍ SKLAD MATERIÁLU</div>
+      <h1>Sklad Brno-Slatina</h1>
+      <p class="sub">Materiál pro 12 aktivních staveb · 3 rampy · 2 450 m²</p>
+      <div class="kpis4">
+        <div class="glass"><span>Obsazenost</span><b>78 <small>%</small></b><i class="minibar"><i style="width:78%"></i></i></div>
+        <div class="glass"><span>Skladové položky</span><b>1 284</b></div>
+        <div class="glass"><span>Hodnota zásob</span><b>642 300 <small>€</small></b></div>
+        <div class="glass"><span>Dnes · příjem / výdej</span><b>14 / 22</b></div>
+      </div>
+    </div>
+    <div class="card glass iso-card">
+      <div class="card-h"><div class="ci"><svg viewBox="0 0 20 20"><path d="M3 7l7-4 7 4-7 4zM3 11l7 4 7-4M3 15l7 4 7-4"/></svg></div><div><h3>Rozložení skladu</h3><p>5 regálů · 120 pozic · naživo</p></div></div>
+      <svg id="iso" viewBox="0 0 1200 640"></svg>
+      <div class="legend iso-leg"><span><i class="lg c7"></i>Na skladě</span><span><i class="lg c5"></i>Nízká zásoba</span><span><i class="lg c3"></i>Vyprodáno</span><span><i class="lg c1"></i>Vozík</span></div>
+      <div class="iso-side glass" id="isoSide"></div>
+    </div>
+  </section>
+
+  <!-- ============ VOZIDLA ============ -->
+  <section class="screen" id="s-vozidla">
+    <div class="pg-head"><div><div class="greet"><span class="dot live"></span>Vozový park · naživo</div><h1>Vozidla a stroje</h1><p class="sub">14 vozidel · 11 v provozu · 2 v servisu · 1 volné</p></div></div>
+    <div class="veh-grid" id="vehicles"></div>
+  </section>
+
+  <!-- ============ FINANCE ============ -->
+  <section class="screen" id="s-finance">
+    <div class="pg-head"><div><div class="greet"><span class="dot live"></span>Finance · listopad 2026</div><h1>Cash-flow a účty</h1><p class="sub">3 účty · 27 vystavených faktur · 4 po splatnosti</p></div></div>
+    <div class="fin-accs"><div class="glass"><span>Rezervní účet</span><b>501 000 <small>€</small></b></div><div class="glass"><span>Mzdový účet</span><b>214 960 <small>€</small></b></div><div class="glass"><span>Provozní účet</span><b>1 144 810 <small>€</small></b></div><div class="glass" style="border-color:rgba(80,230,255,.5)"><span>Celkem na účtech</span><b>1 860 760 <small>€</small></b></div></div>
+    <div class="fin-grid">
+      <div class="card glass"><div class="card-h"><div class="ci">€</div><div><h3>Tržby 2026</h3><p>skutečnost vs. plán · mil. €</p></div><span class="chip c-a">83 % plánu</span></div><div class="bars big" id="bars2"></div></div>
+      <div class="card glass"><div class="card-h"><div class="ci">!</div><div><h3>Faktury po splatnosti</h3><p>4 faktury · 186 400 €</p></div></div><div class="inv" id="inv"></div></div>
+    </div>
+  </section>
+  </main>
+
+  <aside class="drawer glass" id="drawer" aria-hidden="true">
+    <button class="x" id="drawerX" aria-label="Zavřít">✕</button>
+    <div id="drawerBody"></div>
+  </aside>
+  <div class="tooltip" id="tip"></div>
+</div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
